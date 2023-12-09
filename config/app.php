@@ -185,4 +185,10 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+
+    'user_type' => [
+        'admin'  => 1,
+        'user'  => 2,
+        'employee' => 3
+    ]
 ];

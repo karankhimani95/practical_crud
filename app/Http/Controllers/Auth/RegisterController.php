@@ -99,7 +99,9 @@ class RegisterController extends Controller
         $userOtp = $this->generateOtp($request->mobile_no);
         //  we can write here logic to send otp to users mobile number
 
-        dd($verficationUrl,$userOtp,'dfgdfgfd');
+
+        //  Using this variable we get verification link and user mobile otp with we can proceed to verify user
+        // $verficationUrl,$userOtp,
 
         return redirect()->route('login')->with('success', 'Your have subscribed to plan successfully.');
     }
@@ -138,7 +140,7 @@ class RegisterController extends Controller
     }
     public function verifyUser(VerifyUserRequest $request)
     {
-// dd(request()->all(),'dfgfd');
+
         $verifyUser = UserVerify::where(['token'=> request('token'), 'token_expired' => false])->first();
         $message = 'Sorry your email cannot be identified.';
         if(!$verifyUser) {
@@ -170,7 +172,7 @@ class RegisterController extends Controller
                 } 
                 Auth::login($user);
       
-                return redirect('/home');
+                return redirect()->route('users.index');
             }
               
         }
